@@ -98,7 +98,7 @@ export default function sidebar() {
                         <PlaylistItem 
                             name={playlist}
                             route="/"
-                        ></PlaylistItem>
+                        />
                     ))}
                 </List>
             </Box>
