@@ -1,14 +1,9 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import {
     Box, 
     List,
-    ListItem,
-    ListIcon,
     Center,
-    Divider,
-    LinkBox,
-    LinkOverlay
+    Divider
 } from "@chakra-ui/layout"
 import {
     MdHome,
@@ -17,6 +12,8 @@ import {
     MdPlaylistAdd,
     MdFavorite
 } from "react-icons/md"
+
+import MenuItem from './menuItem'
 
 const navMenu = 
     [
@@ -34,8 +31,10 @@ const navMenu =
             name: "Your Library",
             icon: MdLibraryMusic,
             route: "/library"
-        },
-        {
+        }]
+
+const musicMenu = [
+    {
             name: "Create Playlist",
             icon: MdPlaylistAdd,
             route: "/playlist"
@@ -43,9 +42,9 @@ const navMenu =
         {
             name: "Liked Songs",
             icon: MdFavorite,
-            route: "/liked"
-        },
-    ]
+            route: "/favorites"
+    }
+]
 
 export default function sidebar() {
   return (
@@ -65,22 +64,28 @@ export default function sidebar() {
             <Box marginBottom="20px">
                 <List spacing={3}>
                     {navMenu.map(menu => (
-                        <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
-                            <LinkBox>
-                                <Link href={menu.route}>
-                                    <LinkOverlay>
-                                    <ListIcon as={menu.icon} color="white" marginRight="20px" />
-                                    {menu.name}
-                                    </LinkOverlay>
-                                </Link>
-                            </LinkBox>
-                        </ListItem>
+                        <MenuItem
+                            name={menu.name}
+                            icon={menu.icon}
+                            route={menu.route}
+                        />
                     ))}
                 </List>
             </Box>
             <Center>
-                <Divider width="80%"/>
-            </Center>    
+                <Divider width="80%" color="gray.800" />
+            </Center> 
+            <Box marginTop="20px">
+                <List spacing={2}>
+                    {musicMenu.map(menu => (
+                        <MenuItem
+                            name={menu.name}
+                            icon={menu.icon}
+                            route={menu.route}
+                        />
+                    ))}
+                </List>
+            </Box>
         </Box>
     </Box>
   )
