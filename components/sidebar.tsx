@@ -14,6 +14,7 @@ import {
 } from "react-icons/md"
 
 import MenuItem from './menuItem'
+import PlaylistItem from './playlistItem'
 
 const navMenu = 
     [
@@ -46,6 +47,8 @@ const musicMenu = [
     }
 ]
 
+const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`)
+
 export default function sidebar() {
   return (
     <Box 
@@ -55,13 +58,13 @@ export default function sidebar() {
         paddingX="5px" 
         color="gray"
     >
-        <Box paddingY="20px">
+        <Box paddingY="20px" height="100%">
             <Center>
                 <Box width="120px" marginBottom="20px" paddingX="20px">
                     <Image src="/logo.svg" height={60} width={120} />
                 </Box>
             </Center>
-            <Box marginBottom="20px">
+            <Box>
                 <List spacing={3}>
                     {navMenu.map(menu => (
                         <MenuItem
@@ -73,9 +76,9 @@ export default function sidebar() {
                 </List>
             </Box>
             <Center>
-                <Divider width="80%" color="gray.800" />
+                <Divider width="80%" marginY="20px" color="gray.800" />
             </Center> 
-            <Box marginTop="20px">
+            <Box>
                 <List spacing={2}>
                     {musicMenu.map(menu => (
                         <MenuItem
@@ -83,6 +86,19 @@ export default function sidebar() {
                             icon={menu.icon}
                             route={menu.route}
                         />
+                    ))}
+                </List>
+            </Box>
+            <Center>
+                <Divider width="80%" marginY="20px" color="gray.800" />
+            </Center> 
+            <Box height="75%" overflowY="auto" paddingY="20px">
+                <List spacing={2}>
+                    {playlists.map(playlist => (
+                        <PlaylistItem 
+                            name={playlist}
+                            route="/"
+                        ></PlaylistItem>
                     ))}
                 </List>
             </Box>
