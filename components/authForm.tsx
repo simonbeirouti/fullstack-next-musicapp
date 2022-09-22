@@ -18,14 +18,6 @@ const AuthForm = ({mode}) => {
         await auth(mode, {email, password})
         setIsLoading(false)
         router.push('/')
-            // .then(res => {
-            //     setIsLoading(false)
-            //     router.push('/')
-            // })
-            // .catch(err => {
-            //     setIsLoading(false)
-            //     console.log(err)
-            // })
     }
 
     return (
