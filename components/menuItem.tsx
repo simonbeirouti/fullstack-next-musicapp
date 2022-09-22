@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function menuItem({name, icon, route}) {
   return (
-    <ListItem paddingX="20px" fontSize="16px" key={name}>
+    <ListItem key={name} paddingX="20px" fontSize="16px">
         <LinkBox>
             <Link href={route}>
                 <LinkOverlay>
